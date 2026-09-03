@@ -1,16 +1,18 @@
 "use client";
 
-import { Activity, AlertTriangle, Truck, Sun, Moon, User, Settings, LogOut, Mail } from "lucide-react";
+import { Activity, AlertTriangle, Truck, Sun, Moon, User, Settings, LogOut, Mail, Menu } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 
 export default function TopBar({ 
   showFleet = true, 
-  onToggleFleet 
+  onToggleFleet,
+  onToggleSidebar
 }: { 
   showFleet?: boolean; 
   onToggleFleet?: () => void;
+  onToggleSidebar?: () => void;
 }) {
   const { theme, setTheme } = useTheme();
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -30,6 +32,13 @@ export default function TopBar({
   return (
     <header className="h-16 border-b border-border bg-card/95 backdrop-blur-md px-6 flex items-center justify-between z-[9999] relative shadow-sm pointer-events-auto">
       <div className="flex items-center gap-3">
+        <button 
+          onClick={onToggleSidebar}
+          className="p-2 -ml-2 rounded-full hover:bg-secondary text-muted-foreground hover:text-foreground transition-colors mr-2"
+          title="Toggle Sidebar"
+        >
+          <Menu className="h-5 w-5" />
+        </button>
         <Activity className="text-primary h-6 w-6" />
         <h1 className="text-lg font-bold tracking-tight">NER-LogiSync <span className="text-muted-foreground font-normal text-sm ml-2">Command Center</span></h1>
       </div>

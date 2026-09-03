@@ -17,6 +17,7 @@ export default function CommandCenter() {
   const [selectedAltId, setSelectedAltId] = useState<string | null>(null);
   const [confirmedAltId, setConfirmedAltId] = useState<string | null>(null);
   const [showFleet, setShowFleet] = useState<boolean>(true);
+  const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(true);
   
   // Reporting state
   const [isReporting, setIsReporting] = useState(false);
@@ -55,9 +56,18 @@ export default function CommandCenter() {
 
   return (
     <div className="flex h-screen w-full flex-col bg-background text-foreground">
-      <TopBar showFleet={showFleet} onToggleFleet={() => setShowFleet(!showFleet)} />
+      <TopBar 
+        showFleet={showFleet} 
+        onToggleFleet={() => setShowFleet(!showFleet)} 
+        onToggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)}
+      />
       <div className="flex flex-1 overflow-hidden relative">
-        <Sidebar />
+        <Sidebar 
+          isOpen={isSidebarOpen} 
+          activeRouteId={activeRouteId}
+          isOptimized={isOptimized}
+          confirmedAltId={confirmedAltId}
+        />
         <main className="flex-1 relative">
           <MapView 
             activeRoute={activeRoute} 
