@@ -294,16 +294,7 @@ export default function MapView({
 
             {originCoord && <Marker position={originCoord} icon={originIcon} />}
             {destCoord && <Marker position={destCoord} icon={destIcon} />}
-            {hasActiveHazard && hazardCoord && (
-              <Marker position={hazardCoord} icon={hazardIcon}>
-                <Popup className="custom-popup">
-                  <div className="font-sans">
-                    <p className="text-xs font-bold text-red-600 m-0">{activeRoute.hazardType}</p>
-                    <p className="text-[10px] text-gray-500 m-0 mt-1">AI Confidence: {activeRoute.hazardConfidence}</p>
-                  </div>
-                </Popup>
-              </Marker>
-            )}
+            {/* AI hazard marker intentionally removed for live demo to only show user's manual pin */}
           </>
         )}
 
