@@ -65,6 +65,20 @@ function MapClickHandler({ onMapClick }: { onMapClick?: (latlng: L.LatLng) => vo
   return null;
 }
 
+// Component to watch for container size changes (like Sidebar opening/closing) and redraw map
+function MapResizer() {
+  const map = useMap();
+  useEffect(() => {
+    const resizeObserver = new ResizeObserver(() => {
+      map.invalidateSize();
+    });
+    const container = map.getContainer();
+    resizeObserver.observe(container);
+    return () => resizeObserver.disconnect();
+  }, [map]);
+  return null;
+}
+
 export default function MapView({ 
   activeRoute, 
   isOptimized, 
@@ -179,6 +193,7 @@ export default function MapView({
         Always use a single MapContainer and conditionally render its children.
       */}
       <MapContainer center={initialCenter} zoom={initialZoom} style={{ height: '100%', width: '100%' }} zoomControl={false}>
+        <MapResizer />
         <TileLayer
           key={theme} // Force remount when theme changes to apply the CSS class instantly
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
