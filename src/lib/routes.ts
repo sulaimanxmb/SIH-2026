@@ -37,16 +37,16 @@ export const MOCK_ROUTES = [
         ]
       },
       {
-        id: "alt-1-2",
-        name: "Western Mountain Pass",
-        distance: "485 km",
-        time: "12h 15m",
-        riskLevel: "Medium",
+        id: "alt-1-3",
+        name: "Central Logistics Corridor",
+        distance: "510 km",
+        time: "11h 45m",
+        riskLevel: "Very Low",
         coordinates: [
           [91.7362, 26.1445],
-          [91.3833, 26.5000], // Western point
-          [91.5500, 27.2000],
-          [91.7500, 27.4500],
+          [92.1000, 26.2000],
+          [92.6500, 26.8500], // Deeper east
+          [92.3000, 27.4000],
           [91.8677, 27.5888]
         ]
       }
@@ -87,16 +87,16 @@ export const MOCK_ROUTES = [
         ]
       },
       {
-        id: "alt-2-2",
-        name: "Western Valley Route",
-        distance: "210 km",
-        time: "6h 20m",
-        riskLevel: "Medium",
+        id: "alt-2-3",
+        name: "National Highway 306 Bypass",
+        distance: "230 km",
+        time: "6h 50m",
+        riskLevel: "Very Low",
         coordinates: [
           [92.7956, 24.8333],
-          [92.5500, 24.6500],
-          [92.5000, 24.2500],
-          [92.6000, 23.9000],
+          [93.1000, 24.7000],
+          [93.1500, 24.2000],
+          [92.9000, 23.8500],
           [92.7176, 23.7271]
         ]
       }
@@ -133,15 +133,15 @@ export const MOCK_ROUTES = [
         ]
       },
       {
-        id: "alt-3-2",
-        name: "Northern Mountain Trail",
-        distance: "95 km",
-        time: "3h 10m",
-        riskLevel: "Medium",
+        id: "alt-3-3",
+        name: "Commercial Transport Route",
+        distance: "110 km",
+        time: "3h 40m",
+        riskLevel: "Very Low",
         coordinates: [
           [93.7266, 25.9067],
-          [93.8500, 26.0500],
-          [94.0500, 25.9500],
+          [93.6000, 25.7500],
+          [93.8000, 25.5000],
           [94.1086, 25.6701]
         ]
       }
