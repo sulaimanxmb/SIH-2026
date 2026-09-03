@@ -4,7 +4,7 @@ import {
   CloudRain, 
   Construction, 
   TrendingUp, 
-  Fuel, 
+  Timer, 
   ShieldCheck, 
   Activity,
   AlertTriangle
@@ -28,7 +28,7 @@ export default function Sidebar({
   
   // Calculate dynamic metrics based on state
   let efficiency = "+18%";
-  let fuelSaved = "4,120 L";
+  let delayAvoided = "42 Hrs";
   let hazardsAvoided = "12";
   let aiConfidence = "92%";
   let riskStatus = "Moderate";
@@ -36,19 +36,19 @@ export default function Sidebar({
   if (activeRoute) {
     if (activeRouteId === "route-1") {
       efficiency = confirmedAltId ? "+42%" : (isOptimized ? "+34%" : "+0%");
-      fuelSaved = confirmedAltId ? "165 L" : (isOptimized ? "145 L" : "0 L");
+      delayAvoided = confirmedAltId ? "18 Hrs" : (isOptimized ? "14 Hrs" : "0 Hrs");
       hazardsAvoided = "1 (Landslide)";
       aiConfidence = activeRoute.hazardConfidence;
       riskStatus = activeRoute.risk;
     } else if (activeRouteId === "route-2") {
       efficiency = confirmedAltId ? "+28%" : (isOptimized ? "+22%" : "+0%");
-      fuelSaved = confirmedAltId ? "95 L" : (isOptimized ? "85 L" : "0 L");
+      delayAvoided = confirmedAltId ? "9 Hrs" : (isOptimized ? "6 Hrs" : "0 Hrs");
       hazardsAvoided = "1 (Flooding)";
       aiConfidence = activeRoute.hazardConfidence;
       riskStatus = activeRoute.risk;
     } else if (activeRouteId === "route-3") {
       efficiency = confirmedAltId ? "+15%" : (isOptimized ? "+10%" : "+0%");
-      fuelSaved = confirmedAltId ? "45 L" : (isOptimized ? "35 L" : "0 L");
+      delayAvoided = confirmedAltId ? "5 Hrs" : (isOptimized ? "3 Hrs" : "0 Hrs");
       hazardsAvoided = "1 (Subsidence)";
       aiConfidence = activeRoute.hazardConfidence;
       riskStatus = activeRoute.risk;
@@ -74,13 +74,13 @@ export default function Sidebar({
               <span className="text-2xl font-black text-foreground">{efficiency}</span>
             </div>
 
-            {/* Fuel Metric */}
+            {/* Delay Metric */}
             <div className="bg-gradient-to-br from-blue-500/10 to-cyan-500/5 border border-blue-500/20 p-4 rounded-xl flex flex-col justify-center">
               <div className="flex items-center gap-2 text-blue-600 dark:text-blue-400 mb-2">
-                <Fuel className="h-4 w-4" />
-                <span className="text-xs font-semibold">Fuel Saved</span>
+                <Timer className="h-4 w-4" />
+                <span className="text-xs font-semibold">Delay Avoided</span>
               </div>
-              <span className="text-2xl font-black text-foreground">{fuelSaved}</span>
+              <span className="text-2xl font-black text-foreground">{delayAvoided}</span>
             </div>
 
             {/* Hazards Metric */}
