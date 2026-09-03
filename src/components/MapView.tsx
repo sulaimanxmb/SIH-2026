@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from 'react';
-import { useMap, useMapEvents, MapContainer, TileLayer, Polyline, Marker, Popup } from 'react-leaflet';
+import { useMap, useMapEvents, MapContainer, TileLayer, Polyline, Marker, Popup, Circle } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { useTheme } from 'next-themes';
@@ -223,22 +223,29 @@ export default function MapView({
 
         {/* Draw User Submitted Reports */}
         {userReports && userReports.map((report, idx) => (
-          <Marker key={`report-${idx}`} position={[report.lat, report.lng]} icon={hazardIcon}>
-            <Popup className="custom-popup">
-              <div className="font-sans min-w-[140px]">
-                <p className="text-xs font-bold text-red-600 m-0">Reported Blockage</p>
-                <p className="text-[10px] font-semibold text-gray-700 dark:text-gray-300 mt-1 mb-0">{report.cause}</p>
-                <p className="text-[10px] text-gray-500 m-0">Delay: {report.severity}</p>
-                <p className="text-[9px] text-blue-500 mt-1 mb-2">Source: Field Agent</p>
-                <button 
-                  onClick={() => onClearReport && onClearReport(idx)}
-                  className="w-full bg-green-500 hover:bg-green-600 text-white text-[10px] font-bold py-1 rounded shadow-sm transition-colors"
-                >
-                  Clear Blockage
-                </button>
-              </div>
-            </Popup>
-          </Marker>
+          <React.Fragment key={`report-group-${idx}`}>
+            <Circle 
+              center={[report.lat, report.lng]} 
+              radius={12000} // 12km danger zone radius
+              pathOptions={{ color: 'red', fillColor: '#ef4444', fillOpacity: 0.15, weight: 1, dashArray: "5, 5" }} 
+            />
+            <Marker position={[report.lat, report.lng]} icon={hazardIcon}>
+              <Popup className="custom-popup">
+                <div className="font-sans min-w-[140px]">
+                  <p className="text-xs font-bold text-red-600 m-0">Reported Blockage</p>
+                  <p className="text-[10px] font-semibold text-gray-700 dark:text-gray-300 mt-1 mb-0">{report.cause}</p>
+                  <p className="text-[10px] text-gray-500 m-0">Delay: {report.severity}</p>
+                  <p className="text-[9px] text-blue-500 mt-1 mb-2">Source: Field Agent</p>
+                  <button 
+                    onClick={() => onClearReport && onClearReport(idx)}
+                    className="w-full bg-green-500 hover:bg-green-600 text-white text-[10px] font-bold py-1 rounded shadow-sm transition-colors"
+                  >
+                    Clear Blockage
+                  </button>
+                </div>
+              </Popup>
+            </Marker>
+          </React.Fragment>
         ))}
 
         {/* State 1: No Active Route (Empty State) */}
