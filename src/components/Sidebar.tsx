@@ -15,11 +15,13 @@ export default function Sidebar({
   isOpen, 
   activeRouteId, 
   isOptimized, 
+  selectedAltId,
   confirmedAltId 
 }: { 
   isOpen: boolean;
   activeRouteId: string | null;
   isOptimized: boolean;
+  selectedAltId: string | null;
   confirmedAltId: string | null;
 }) {
   if (!isOpen) return null;
@@ -34,24 +36,60 @@ export default function Sidebar({
   let riskStatus = "Moderate";
   
   if (activeRoute) {
+    // Determine which alternate route is actively being viewed
+    const activeAlt = confirmedAltId || selectedAltId;
+    
     if (activeRouteId === "route-1") {
-      efficiency = confirmedAltId ? "+42%" : (isOptimized ? "+34%" : "+0%");
-      delayAvoided = confirmedAltId ? "18 Hrs" : (isOptimized ? "14 Hrs" : "0 Hrs");
       hazardsAvoided = "1 (Landslide)";
       aiConfidence = activeRoute.hazardConfidence;
-      riskStatus = activeRoute.risk;
+      
+      if (activeAlt === "alt-1-1") {
+        efficiency = "+42%";
+        delayAvoided = "18 Hrs";
+      } else if (activeAlt === "alt-1-2") {
+        efficiency = "+28%";
+        delayAvoided = "12 Hrs";
+      } else if (activeAlt === "alt-1-3") {
+        efficiency = "+32%";
+        delayAvoided = "14 Hrs";
+      } else {
+        efficiency = isOptimized ? "+34%" : "+0%";
+        delayAvoided = isOptimized ? "14 Hrs" : "0 Hrs";
+      }
     } else if (activeRouteId === "route-2") {
-      efficiency = confirmedAltId ? "+28%" : (isOptimized ? "+22%" : "+0%");
-      delayAvoided = confirmedAltId ? "9 Hrs" : (isOptimized ? "6 Hrs" : "0 Hrs");
       hazardsAvoided = "1 (Flooding)";
       aiConfidence = activeRoute.hazardConfidence;
-      riskStatus = activeRoute.risk;
+      
+      if (activeAlt === "alt-2-1") {
+        efficiency = "+28%";
+        delayAvoided = "9 Hrs";
+      } else if (activeAlt === "alt-2-2") {
+        efficiency = "+18%";
+        delayAvoided = "6 Hrs";
+      } else if (activeAlt === "alt-2-3") {
+        efficiency = "+22%";
+        delayAvoided = "7 Hrs";
+      } else {
+        efficiency = isOptimized ? "+22%" : "+0%";
+        delayAvoided = isOptimized ? "6 Hrs" : "0 Hrs";
+      }
     } else if (activeRouteId === "route-3") {
-      efficiency = confirmedAltId ? "+15%" : (isOptimized ? "+10%" : "+0%");
-      delayAvoided = confirmedAltId ? "5 Hrs" : (isOptimized ? "3 Hrs" : "0 Hrs");
       hazardsAvoided = "1 (Subsidence)";
       aiConfidence = activeRoute.hazardConfidence;
-      riskStatus = activeRoute.risk;
+      
+      if (activeAlt === "alt-3-1") {
+        efficiency = "+15%";
+        delayAvoided = "5 Hrs";
+      } else if (activeAlt === "alt-3-2") {
+        efficiency = "+10%";
+        delayAvoided = "3 Hrs";
+      } else if (activeAlt === "alt-3-3") {
+        efficiency = "+12%";
+        delayAvoided = "4 Hrs";
+      } else {
+        efficiency = isOptimized ? "+10%" : "+0%";
+        delayAvoided = isOptimized ? "3 Hrs" : "0 Hrs";
+      }
     }
   }
 

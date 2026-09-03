@@ -66,6 +66,7 @@ export default function CommandCenter() {
           isOpen={isSidebarOpen} 
           activeRouteId={activeRouteId}
           isOptimized={isOptimized}
+          selectedAltId={selectedAltId}
           confirmedAltId={confirmedAltId}
         />
         <main className="flex-1 relative">
