@@ -138,44 +138,66 @@ export default function Sidebar({
         <div className="h-px bg-border w-full"></div>
 
         <div>
-          <h2 className="text-xs font-bold text-muted-foreground uppercase tracking-widest mb-4">Live Threat Radar</h2>
+          <h2 className="text-xs font-bold text-muted-foreground uppercase tracking-widest mb-4">Predictive AI Weather Timeline</h2>
           
-          <div className="space-y-3">
-            {(!activeRoute || activeRouteId === "route-1") && (
-              <div className="p-3 border border-red-500/20 bg-red-500/5 rounded-xl flex items-start gap-3 backdrop-blur-sm transition-all hover:bg-red-500/10 cursor-pointer">
-                <div className="bg-red-500/20 p-2 rounded-lg shrink-0">
-                  <AlertTriangle className="h-5 w-5 text-red-600 dark:text-red-400" />
-                </div>
-                <div>
-                  <p className="text-sm font-bold text-foreground">Massive Landslide Risk</p>
-                  <p className="text-xs text-muted-foreground mt-1 leading-relaxed">AI predicts 94% probability of washout on NH-13 near Sela Pass due to saturated soil.</p>
-                </div>
-              </div>
-            )}
-
-            {(!activeRoute || activeRouteId === "route-2") && (
-              <div className="p-3 border border-blue-500/20 bg-blue-500/5 rounded-xl flex items-start gap-3 backdrop-blur-sm transition-all hover:bg-blue-500/10 cursor-pointer">
-                <div className="bg-blue-500/20 p-2 rounded-lg shrink-0">
-                  <CloudRain className="h-5 w-5 text-blue-600 dark:text-blue-400" />
-                </div>
-                <div>
-                  <p className="text-sm font-bold text-foreground">Bridge Washout (Flooding)</p>
-                  <p className="text-xs text-muted-foreground mt-1 leading-relaxed">Barak River overflow detected. 88% confidence of structural instability ahead.</p>
-                </div>
-              </div>
-            )}
+          <div className="space-y-4 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-border before:to-transparent">
             
-            {(!activeRoute || activeRouteId === "route-3") && (
-              <div className="p-3 border border-yellow-500/20 bg-yellow-500/5 rounded-xl flex items-start gap-3 backdrop-blur-sm transition-all hover:bg-yellow-500/10 cursor-pointer">
-                <div className="bg-yellow-500/20 p-2 rounded-lg shrink-0">
-                  <Construction className="h-5 w-5 text-yellow-600 dark:text-yellow-400" />
-                </div>
-                <div>
-                  <p className="text-sm font-bold text-foreground">Road Subsidence</p>
-                  <p className="text-xs text-muted-foreground mt-1 leading-relaxed">Geological sensors detect minor caving. Heavy commercial vehicles advised to detour.</p>
-                </div>
+            {/* Timeline Item 1 */}
+            <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+              <div className="flex items-center justify-center w-10 h-10 rounded-full border-4 border-background bg-blue-500 text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                <CloudRain className="h-4 w-4" />
               </div>
-            )}
+              <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-3 rounded-xl border border-border bg-card/50 backdrop-blur-sm shadow-sm">
+                <div className="flex items-center justify-between mb-1">
+                  <span className="font-bold text-sm text-foreground">14:00 PM</span>
+                  <span className="text-[10px] font-medium text-blue-500 bg-blue-500/10 px-2 py-0.5 rounded-full">Actual</span>
+                </div>
+                <p className="text-xs text-muted-foreground">Heavy Monsoon Showers begin across NER region.</p>
+              </div>
+            </div>
+
+            {/* Timeline Item 2 */}
+            <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+              <div className="flex items-center justify-center w-10 h-10 rounded-full border-4 border-background bg-yellow-500 text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                <Activity className="h-4 w-4" />
+              </div>
+              <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-3 rounded-xl border border-border bg-card/50 backdrop-blur-sm shadow-sm">
+                <div className="flex items-center justify-between mb-1">
+                  <span className="font-bold text-sm text-foreground">16:30 PM</span>
+                  <span className="text-[10px] font-medium text-yellow-600 bg-yellow-500/10 px-2 py-0.5 rounded-full">Predictive</span>
+                </div>
+                <p className="text-xs text-muted-foreground">Soil Saturation Threshold (85%) reached near Sela Pass.</p>
+              </div>
+            </div>
+
+            {/* Timeline Item 3 */}
+            <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+              <div className="flex items-center justify-center w-10 h-10 rounded-full border-4 border-background bg-red-500 text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                <AlertTriangle className="h-4 w-4" />
+              </div>
+              <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-3 rounded-xl border border-red-500/30 bg-red-500/5 backdrop-blur-sm shadow-sm">
+                <div className="flex items-center justify-between mb-1">
+                  <span className="font-bold text-sm text-red-500">18:00 PM</span>
+                  <span className="text-[10px] font-medium text-red-600 bg-red-500/10 px-2 py-0.5 rounded-full">Critical</span>
+                </div>
+                <p className="text-xs text-muted-foreground">94% Flash Flood & Landslide Risk on direct routes.</p>
+              </div>
+            </div>
+
+            {/* Timeline Item 4 */}
+            <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+              <div className="flex items-center justify-center w-10 h-10 rounded-full border-4 border-background bg-emerald-500 text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                <TrendingUp className="h-4 w-4" />
+              </div>
+              <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-3 rounded-xl border border-emerald-500/30 bg-emerald-500/5 backdrop-blur-sm shadow-sm">
+                <div className="flex items-center justify-between mb-1">
+                  <span className="font-bold text-sm text-emerald-500">19:00 PM</span>
+                  <span className="text-[10px] font-medium text-emerald-600 bg-emerald-500/10 px-2 py-0.5 rounded-full">Action</span>
+                </div>
+                <p className="text-xs text-muted-foreground">AI pre-emptive fleet rerouting activated.</p>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>

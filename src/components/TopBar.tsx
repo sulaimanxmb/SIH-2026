@@ -8,11 +8,13 @@ import Link from "next/link";
 export default function TopBar({ 
   showFleet = true, 
   onToggleFleet,
-  onToggleSidebar
+  onToggleSidebar,
+  onToggleAlerts
 }: { 
   showFleet?: boolean; 
   onToggleFleet?: () => void;
   onToggleSidebar?: () => void;
+  onToggleAlerts?: () => void;
 }) {
   const { theme, setTheme } = useTheme();
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -56,10 +58,13 @@ export default function TopBar({
           <Truck className="h-4 w-4" />
           <span>24 Active Vehicles</span>
         </button>
-        <div className="flex items-center gap-2 bg-red-500/10 text-red-600 dark:text-red-400 px-3 py-1.5 rounded-full text-sm font-medium">
+        <button 
+          onClick={onToggleAlerts}
+          className="flex items-center gap-2 bg-red-500/10 hover:bg-red-500/20 text-red-600 dark:text-red-400 px-3 py-1.5 rounded-full text-sm font-medium transition-colors cursor-pointer"
+        >
           <AlertTriangle className="h-4 w-4" />
           <span>3 Critical Alerts</span>
-        </div>
+        </button>
         
         <button 
           onClick={() => setTheme(theme === "dark" ? "light" : "dark")}

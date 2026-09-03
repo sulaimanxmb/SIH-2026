@@ -7,6 +7,7 @@ import Sidebar from "./Sidebar";
 import TopBar from "./TopBar";
 import RouteOptimizerPanel from "./RouteOptimizerPanel";
 import ReportHazardModal from "./ReportHazardModal";
+import ThreatRadarModal from "./ThreatRadarModal";
 import { MOCK_ROUTES } from "@/lib/routes";
 
 const MapView = dynamic(() => import("./MapView"), { ssr: false });
@@ -18,6 +19,7 @@ export default function CommandCenter() {
   const [confirmedAltId, setConfirmedAltId] = useState<string | null>(null);
   const [showFleet, setShowFleet] = useState<boolean>(true);
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(true);
+  const [isAlertsOpen, setIsAlertsOpen] = useState<boolean>(false);
   
   // Reporting state
   const [isReporting, setIsReporting] = useState(false);
@@ -60,6 +62,7 @@ export default function CommandCenter() {
         showFleet={showFleet} 
         onToggleFleet={() => setShowFleet(!showFleet)} 
         onToggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)}
+        onToggleAlerts={() => setIsAlertsOpen(true)}
       />
       <div className="flex flex-1 overflow-hidden relative">
         <Sidebar 
@@ -161,6 +164,12 @@ export default function CommandCenter() {
               }}
             />
           )}
+          {/* Render Threat Radar Modal */}
+          <ThreatRadarModal 
+            isOpen={isAlertsOpen} 
+            onClose={() => setIsAlertsOpen(false)} 
+            activeRouteId={activeRouteId}
+          />
         </main>
       </div>
     </div>
