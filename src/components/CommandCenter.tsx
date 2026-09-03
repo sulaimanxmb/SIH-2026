@@ -55,6 +55,7 @@ export default function CommandCenter() {
   }, [userReports, isReportsLoaded]);
 
   const activeRoute = activeRouteId ? (MOCK_ROUTES.find(r => r.id === activeRouteId) || null) : null;
+  const hasActiveHazard = userReports.length > 0;
 
   return (
     <div className="flex h-screen w-full flex-col bg-background text-foreground">
@@ -71,6 +72,7 @@ export default function CommandCenter() {
           isOptimized={isOptimized}
           selectedAltId={selectedAltId}
           confirmedAltId={confirmedAltId}
+          hasActiveHazard={hasActiveHazard}
         />
         <main className="flex-1 relative">
           <MapView 
@@ -80,6 +82,7 @@ export default function CommandCenter() {
             confirmedAltId={confirmedAltId}
             showFleet={showFleet}
             userReports={userReports}
+            hasActiveHazard={hasActiveHazard}
             onClearReport={(index) => {
               const newReports = [...userReports];
               newReports.splice(index, 1);
@@ -106,7 +109,7 @@ export default function CommandCenter() {
             </div>
           )}
 
-          {activeRoute && !pendingMapReport && (
+          {activeRoute && !pendingMapReport && hasActiveHazard && (
             <RouteOptimizerPanel 
               onOptimizeRoute={() => {
                 setIsOptimized(true);

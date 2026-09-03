@@ -86,6 +86,7 @@ export default function MapView({
   confirmedAltId,
   showFleet = true,
   userReports = [],
+  hasActiveHazard = false,
   onMapClick,
   onClearReport
 }: { 
@@ -95,6 +96,7 @@ export default function MapView({
   confirmedAltId?: string | null;
   showFleet?: boolean;
   userReports?: any[];
+  hasActiveHazard?: boolean;
   onMapClick?: (latlng: L.LatLng) => void;
   onClearReport?: (index: number) => void;
 }) {
@@ -250,17 +252,17 @@ export default function MapView({
             {/* Draw Original Route - hidden if navigation is confirmed */}
             {!confirmedAltId && originalPath.length > 0 && (
               <Polyline 
-                key={`orig-${isOptimized}`} 
+                key={`orig-${isOptimized}-${hasActiveHazard}`} 
                 positions={originalPath} 
-                color="#ef4444" 
-                weight={isOptimized ? 4 : 6} 
-                opacity={isOptimized ? 0.6 : 0.9} 
-                dashArray={isOptimized ? "10, 10" : undefined}
+                color={hasActiveHazard ? "#ef4444" : "#10b981"} 
+                weight={hasActiveHazard && isOptimized ? 4 : 6} 
+                opacity={hasActiveHazard && isOptimized ? 0.6 : 0.9} 
+                dashArray={hasActiveHazard && isOptimized ? "10, 10" : undefined}
               />
             )}
 
-            {/* Draw Safe Routes */}
-            {isOptimized && sortedAlts.map((alt: any) => {
+            {/* Draw Safe Routes (only if hazard detected) */}
+            {hasActiveHazard && isOptimized && sortedAlts.map((alt: any) => {
               const path = altPaths[alt.id];
               if (!path) return null;
               
@@ -285,7 +287,7 @@ export default function MapView({
 
             {originCoord && <Marker position={originCoord} icon={originIcon} />}
             {destCoord && <Marker position={destCoord} icon={destIcon} />}
-            {hazardCoord && (
+            {hasActiveHazard && hazardCoord && (
               <Marker position={hazardCoord} icon={hazardIcon}>
                 <Popup className="custom-popup">
                   <div className="font-sans">

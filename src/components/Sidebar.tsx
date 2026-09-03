@@ -16,13 +16,15 @@ export default function Sidebar({
   activeRouteId, 
   isOptimized, 
   selectedAltId,
-  confirmedAltId 
+  confirmedAltId,
+  hasActiveHazard = false
 }: { 
   isOpen: boolean;
   activeRouteId: string | null;
   isOptimized: boolean;
   selectedAltId: string | null;
   confirmedAltId: string | null;
+  hasActiveHazard?: boolean;
 }) {
   if (!isOpen) return null;
 
@@ -36,8 +38,15 @@ export default function Sidebar({
   let riskStatus = "Moderate";
   
   if (activeRoute) {
-    // Determine which alternate route is actively being viewed
-    const activeAlt = confirmedAltId || selectedAltId;
+    if (!hasActiveHazard) {
+      efficiency = "100%";
+      delayAvoided = "0 Hrs";
+      hazardsAvoided = "0";
+      aiConfidence = "N/A";
+      riskStatus = "Safe";
+    } else {
+      // Determine which alternate route is actively being viewed
+      const activeAlt = confirmedAltId || selectedAltId;
     
     if (activeRouteId === "route-1") {
       hazardsAvoided = "1 (Landslide)";
@@ -91,6 +100,7 @@ export default function Sidebar({
         delayAvoided = isOptimized ? "3 Hrs" : "0 Hrs";
       }
     }
+    }
   }
 
   return (
@@ -138,7 +148,19 @@ export default function Sidebar({
         <div className="h-px bg-border w-full"></div>
 
         <div>
-          <h2 className="text-xs font-bold text-muted-foreground uppercase tracking-widest mb-4">Predictive AI Weather Timeline</h2>
+          <h2 className="text-xs font-bold text-muted-foreground uppercase tracking-widest mb-4">
+            {hasActiveHazard ? "Predictive AI Weather Timeline" : "Route Status"}
+          </h2>
+          
+          {!hasActiveHazard ? (
+            <div className="p-4 rounded-xl border border-emerald-500/30 bg-emerald-500/5 flex flex-col items-center justify-center text-center py-8">
+              <div className="w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center mb-3">
+                <ShieldCheck className="h-6 w-6 text-emerald-500" />
+              </div>
+              <p className="font-bold text-emerald-600 dark:text-emerald-400">Clear Skies Ahead</p>
+              <p className="text-xs text-muted-foreground mt-2">No geological or meteorological hazards detected on the active route.</p>
+            </div>
+          ) : (
           
           <div className="flex overflow-x-auto gap-4 pb-4 snap-x snap-mandatory relative" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
             
@@ -231,7 +253,8 @@ export default function Sidebar({
             </div>
 
           </div>
-        </div>
+          </div>
+        )}
       </div>
     </aside>
   );
