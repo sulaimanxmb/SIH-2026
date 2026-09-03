@@ -49,20 +49,6 @@ export const MOCK_ROUTES = [
           [91.7500, 27.4500],
           [91.8677, 27.5888]
         ]
-      },
-      {
-        id: "alt-1-3",
-        name: "Central Logistics Corridor",
-        distance: "510 km",
-        time: "11h 45m",
-        riskLevel: "Very Low",
-        coordinates: [
-          [91.7362, 26.1445],
-          [92.1000, 26.2000],
-          [92.6500, 26.8500], // Deeper east
-          [92.3000, 27.4000],
-          [91.8677, 27.5888]
-        ]
       }
     ],
     hazardLocation: [92.0510, 27.0987] as [number, number],
@@ -113,20 +99,6 @@ export const MOCK_ROUTES = [
           [92.6000, 23.9000],
           [92.7176, 23.7271]
         ]
-      },
-      {
-        id: "alt-2-3",
-        name: "National Highway 306 Bypass",
-        distance: "230 km",
-        time: "6h 50m",
-        riskLevel: "Very Low",
-        coordinates: [
-          [92.7956, 24.8333],
-          [93.1000, 24.7000],
-          [93.1500, 24.2000],
-          [92.9000, 23.8500],
-          [92.7176, 23.7271]
-        ]
       }
     ],
     hazardLocation: [92.7212, 24.3121] as [number, number],
@@ -170,19 +142,6 @@ export const MOCK_ROUTES = [
           [93.7266, 25.9067],
           [93.8500, 26.0500],
           [94.0500, 25.9500],
-          [94.1086, 25.6701]
-        ]
-      },
-      {
-        id: "alt-3-3",
-        name: "Commercial Transport Route",
-        distance: "110 km",
-        time: "3h 40m",
-        riskLevel: "Very Low",
-        coordinates: [
-          [93.7266, 25.9067],
-          [93.6000, 25.7500],
-          [93.8000, 25.5000],
           [94.1086, 25.6701]
         ]
       }
