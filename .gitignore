@@ -29,3 +29,7 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+# AI Agent Configs
+AGENTS.md
+CLAUDE.md
