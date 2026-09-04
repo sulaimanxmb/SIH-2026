@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "NER-LogiSync | Smart Logistics Accessibility",
+  title: "NER-Alturas | Smart Logistics Accessibility",
   description: "AI-powered Smart Logistics Accessibility Intelligence Platform for NER",
 };
 

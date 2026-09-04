@@ -15,7 +15,7 @@ export default function LoginPage() {
           <div className="mx-auto bg-primary/10 w-16 h-16 rounded-full flex items-center justify-center mb-4 border border-primary/20">
             <Activity className="h-8 w-8 text-primary" />
           </div>
-          <h1 className="text-2xl font-bold tracking-tight text-foreground">Welcome to NER-LogiSync</h1>
+          <h1 className="text-2xl font-bold tracking-tight text-foreground">Welcome to NER-Alturas</h1>
           <p className="text-sm text-muted-foreground mt-2">Sign in to access the Smart Logistics Accessibility Platform</p>
         </div>
 

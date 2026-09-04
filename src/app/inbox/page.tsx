@@ -12,7 +12,7 @@ export default function InboxPage() {
       <header className="h-16 border-b border-border bg-card/80 backdrop-blur px-6 flex items-center justify-between sticky top-0 z-10">
         <div className="flex items-center gap-3">
           <Activity className="text-primary h-6 w-6" />
-          <h1 className="text-lg font-bold">NER-LogiSync <span className="text-muted-foreground font-normal text-sm ml-2">Inbox</span></h1>
+          <h1 className="text-lg font-bold">NER-Alturas <span className="text-muted-foreground font-normal text-sm ml-2">Inbox</span></h1>
         </div>
         <Link href="/">
           <button className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors bg-secondary px-3 py-1.5 rounded-full">

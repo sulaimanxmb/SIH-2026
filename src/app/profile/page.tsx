@@ -22,7 +22,7 @@ export default function ProfilePage() {
       <header className="h-16 border-b border-border bg-card/80 backdrop-blur px-6 flex items-center justify-between">
         <div className="flex items-center gap-3">
           <Activity className="text-primary h-6 w-6" />
-          <h1 className="text-lg font-bold">NER-LogiSync <span className="text-muted-foreground font-normal text-sm ml-2">Profile</span></h1>
+          <h1 className="text-lg font-bold">NER-Alturas <span className="text-muted-foreground font-normal text-sm ml-2">Profile</span></h1>
         </div>
         <Link href="/">
           <button className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors bg-secondary px-3 py-1.5 rounded-full">
@@ -103,7 +103,7 @@ export default function ProfilePage() {
                     Company Name
                   </span>
                   <p className="text-base font-medium text-foreground bg-secondary/50 p-3 rounded-lg border border-border/50">
-                    NER Logistics Corporation
+                    NER-Alturas Corporation
                   </p>
                 </div>
                 

@@ -1,4 +1,4 @@
-# Smart Logistics Accessibility Intelligence Platform (NER)
+# NER-Alturas | Smart Logistics Accessibility Platform
 
 This repository contains the Command Center / Dispatcher Dashboard for our SIH 2026 project, focused on solving logistics and routing challenges in the Northeast Region (NER) of India.
 

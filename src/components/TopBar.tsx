@@ -42,7 +42,7 @@ export default function TopBar({
           <Menu className="h-5 w-5" />
         </button>
         <Activity className="text-primary h-6 w-6" />
-        <h1 className="text-lg font-bold tracking-tight">NER-LogiSync <span className="text-muted-foreground font-normal text-sm ml-2">Command Center</span></h1>
+        <h1 className="text-lg font-bold tracking-tight">NER-Alturas <span className="text-muted-foreground font-normal text-sm ml-2">Command Center</span></h1>
       </div>
 
       <div className="flex items-center gap-6">
